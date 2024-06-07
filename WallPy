@@ -1,0 +1,139 @@
+import random
+money = 100
+petrol_price = 0
+iron_price = 0
+water_price = 0
+my_petrol = 0
+my_iron = 0
+my_water = 0
+ans = 0
+ans2 = 0
+ans3 = 0
+mission1 = 0
+round = 0
+def showValue():
+    print("money: $", money)
+    print("petrol_price:", petrol_price)
+    print("iron_price:", iron_price)
+    print("water_price:", water_price)
+    print("my_petrol:", my_petrol)
+    print("my_iron", my_iron)
+    print("my_water", my_water)
+def mixPrice():
+    global petrol_price, iron_price, water_price
+    petrol_price = random.randint(1,50)
+    iron_price = random.randint(1,50)
+    water_price = random.randint(1,50)
+def showMission():
+    print("Mission:")
+    if mission1 == 0:
+        print("1. Earn $1,000")
+    else: 
+        print("No task ;) ")
+def error():
+    print("It's not possible try again")
+print(" Hello young entrepreneur. Welcome to WallPy, the new stock exchange simulator by Makashi_16. You must earn money by buy and sell petrol,iron and water. For communicate with WallPy, answer questions with, for the 1st question: buy, sell, pass or mission; for the 2nd question: petrol, iron, water or the number of the mission you want to complete; and for the third question : you must to answer the number of action you want to buy. If you pass the turn, prices change but you lose 10$. Good luck !!!")
+print(" I foget to say if you want to stop, write exit but you will don't need it ;)")
+mixPrice()
+running = True
+while running == True:
+    ans = 0
+    ans2 = 0
+    ans3 = 0
+    showValue()
+    print("Do you want to buy ,sell or pass ?")
+    ans = str(input())
+    if ans == "buy":
+        print("What do you want to buy ?")
+        ans2 = str(input())
+        if ans2 == "petrol":
+            print("How much petrol do you want ?")
+            ans3 = int(input())
+            if (ans3 * petrol_price) <= money:
+                money = money - (ans3 * petrol_price)
+                my_petrol = my_petrol + ans3
+                round = round + 1
+                mixPrice()
+            else:
+                error()
+        elif ans2 == "iron":
+            print("How much iron do you want ?")
+            ans3 = int(input())
+            if (ans3 * iron_price) <= money:
+                money = money - (ans3 * iron_price)
+                my_iron = my_iron + ans3
+                round = round + 1
+                mixPrice()
+            else:
+                error()
+        elif ans2 == "water":
+            print("How much water do you want ?")
+            ans3 = int(input())
+            if (ans3 * water_price) <= money:
+                money = money - (ans3 * water_price)
+                my_water = my_water + ans3
+                round = round + 1
+                mixPrice()
+            else:
+                error()
+        else:
+            error()
+    elif ans == "sell":
+        print("What do you want to sell ?")
+        ans2 = str(input())
+        if ans2 == "petrol" :
+            print("How much petrol do you want to sell ?")
+            ans3 = int(input())
+            if ans3 <= my_petrol:
+                money = money + (ans3 * petrol_price)
+                my_petrol = my_petrol - ans3
+                round = round + 1 
+                mixPrice()
+            else: 
+                error()
+        elif ans2 == "iron":
+            print("How much iron do you want to sell ?")
+            ans3 = int(input())
+            if ans3 <= my_iron:
+                money = money + (ans3 * iron_price)
+                my_iron = my_iron - ans3
+                round = round + 1 
+                mixPrice()
+            else:
+                error()
+        elif ans2 == "water":
+            print("How much water do you want to sell ?")
+            ans3 = int(input())
+            if ans3 <= my_water:
+                money = money + (ans3 * water_price)
+                my_water = my_water - ans3
+                round = round + 1
+                mixPrice()
+            else:
+                error()
+        else: 
+            error()
+    elif ans == "pass":
+        if money >= 10:
+            money = money - 10
+            print("You was waiting for better price, you lose $10.")
+            round = round + 1 
+            mixPrice()
+        else:
+            error()
+    elif ans == "exit":
+        running = False
+    elif ans == "mission":
+        showMission()
+        print("Witch mission do you want to complete ? (write the number of the mission")
+        ans2 = int(input())
+        if ans2 == 1:
+            if money >= 1000:
+                print("Conglurations, mission completed succesfully")
+                money = money -1000
+            else: 
+                error()
+    elif ans == "round":
+        print("round :", round)
+    else:
+        error()
