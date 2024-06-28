@@ -1,0 +1,5 @@
+100
+0
+{"petrol": 7, "iron": 12, "water": 41, "wood": 30, "coffee": 1, "wheat": 32}
+{"petrol": 0, "iron": 0, "water": 0, "wood": 0, "coffee": 0, "wheat": 0}
+{"Millionaire : Earn 1 million $": false, "Petrol King : Earn 500 petrol stock": false, "Always awake : Earn 500 coffee stock": false, "Never thirst : Earn 500 water stock": false, "Country guy : Earn 500 wheat stock": false, "Iron man : Earn 500 iron stock": false, "Lumberjack : Earn 500 wood stock": false, "Survivor : Be alive at the round 100": false}
